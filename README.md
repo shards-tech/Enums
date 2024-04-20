@@ -45,7 +45,7 @@ export type EnumItem = {
 type EnumNames = { string }
 ```
 
-1. Using `Enums.new(name: string, enums: EnumNames)` returns a `table`
+1. Using `Enums.new(Name: string, EnumList: EnumNames)` returns a `table`
 
 For example:
 
@@ -60,7 +60,7 @@ local Directions = Enums.new("Directions", {
 local Upward = Directions.Up
 ```
 
-2. Using `Enums:from(obj: any)` returns a `boolean`
+1. Using `Enums:from(Object: any)` returns a `boolean`
 
 For example:
 

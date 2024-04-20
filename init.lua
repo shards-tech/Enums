@@ -43,25 +43,26 @@ Enums.__index = Enums
 	Upward.Value --> Returns 1
 	```
 ]=]
-function Enums.new(name: string, enums: EnumNames)
-	assert(type(name) == "string", "Name as a string required")
-	assert(type(enums) == "table", "Enums as a table required")
+function Enums.new(Name: string, EnumList: EnumNames)
+	assert(type(Name) == "string", "Name as a string required")
+	assert(type(EnumList) == "table", "Enums as a table required")
 	local self = {}
 	self[LIST_KEY] = {}
-	self[NAME_KEY] = name
+	self[NAME_KEY] = Name
 
-	for i, enumName in ipairs(enums) do
-		assert(type(enumName) == "string", "Enum name must be a string")
+	for Index, EnumName in ipairs(EnumList) do
+		assert(type(Name) == "string", "Enum name must be a string")
 		
 		local EnumItem = table.freeze({
-			Name = enumName,
-			Value = i,
+			Name = EnumName,
+			Value = Index,
 			EnumType = self
 		})
 
-		self[enumName] = EnumItem
+		self[Name] = EnumItem
 		table.insert(self[LIST_KEY], EnumItem)
 	end
+
 	return table.freeze(setmetatable(self, Enums))
 end
 
@@ -89,8 +90,8 @@ end
 	Directions:from(Directions.Up) --> True
 	```
 ]=]
-function Enums:from(obj: any): boolean
-	return type(obj) == "table" and obj.EnumType == self
+function Enums:from(Object: any): boolean
+	return type(Object) == "table" and Object.EnumType == self
 end
 
 --[=[
